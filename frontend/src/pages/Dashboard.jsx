@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { getOutcomes, createOutcome } from '../api/client';
 import './Dashboard.css';
 
 export default function Dashboard() {
   const { user, logout } = useAuth();
+  const dateInputRef = useRef(null);
   const [outcomes, setOutcomes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [submitLoading, setSubmitLoading] = useState(false);
@@ -65,6 +66,16 @@ export default function Dashboard() {
       setError(err.message);
     } finally {
       setSubmitLoading(false);
+    }
+  }
+
+  function openDatePicker() {
+    if (dateInputRef.current) {
+      if (typeof dateInputRef.current.showPicker === 'function') {
+        dateInputRef.current.showPicker();
+      } else {
+        dateInputRef.current.focus();
+      }
     }
   }
 
@@ -137,10 +148,11 @@ export default function Dashboard() {
             </div>
             <label htmlFor="outcome-date-recorded">
               Date recorded
-              <div className="date-input-wrapper">
+              <div className="date-input-wrapper" onClick={openDatePicker}>
                 <input
                   id="outcome-date-recorded"
                   type="date"
+                  ref={dateInputRef}
                   value={form.dateRecorded}
                   onChange={(e) => setForm((f) => ({ ...f, dateRecorded: e.target.value }))}
                   disabled={submitLoading}
