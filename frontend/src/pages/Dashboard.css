@@ -166,10 +166,7 @@
 }
 
 .outcome-form input[type="date"]::-webkit-calendar-picker-indicator {
-  cursor: pointer;
-  opacity: 0.8;
-  padding: 4px;
-  margin-left: 4px;
+  opacity: 0; /* hide native icon, keep click behavior */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -248,4 +245,36 @@
   color: var(--text-muted);
   font-size: 0.95rem;
   padding: 1rem 0;
+}
+
+.date-input-wrapper {
+  position: relative;
+}
+
+.date-input-wrapper input[type="date"] {
+  padding-right: 2.4rem;
+}
+
+.date-input-icon {
+  position: absolute;
+  top: 50%;
+  right: 0.85rem;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  pointer-events: none; /* clicks go to the input */
+  color: #000;
+}
+
+.date-input-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }

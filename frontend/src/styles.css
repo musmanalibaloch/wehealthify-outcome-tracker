@@ -1,0 +1,58 @@
+:root {
+  --bg: #ffffff;
+  --bg-subtle: #f3f5fb;
+  --surface: #ffffff;
+  --text: #334155;
+  --text-h: #0f172a;
+  --text-muted: #6b7280;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-alpha: rgba(37, 99, 235, 0.12);
+  --accent-alpha: rgba(236, 72, 153, 0.12);
+  --error: #b91c1c;
+  --error-bg: #fee2e2;
+  --border: rgba(148, 163, 184, 0.4);
+  --radius: 0.5rem;
+  --radius-lg: 0.9rem;
+  --shadow-sm: 0 8px 20px rgba(15, 23, 42, 0.04);
+  --shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 20px 55px rgba(15, 23, 42, 0.12);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter',
+    sans-serif;
+  background: var(--bg-subtle);
+  color: var(--text);
+}
+
+button {
+  font-family: inherit;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

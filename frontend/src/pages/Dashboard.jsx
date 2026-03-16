@@ -137,14 +137,24 @@ export default function Dashboard() {
             </div>
             <label htmlFor="outcome-date-recorded">
               Date recorded
-              <input
-                id="outcome-date-recorded"
-                type="date"
-                value={form.dateRecorded}
-                onChange={(e) => setForm((f) => ({ ...f, dateRecorded: e.target.value }))}
-                disabled={submitLoading}
-                aria-label="Date recorded"
-              />
+              <div className="date-input-wrapper">
+                <input
+                  id="outcome-date-recorded"
+                  type="date"
+                  value={form.dateRecorded}
+                  onChange={(e) => setForm((f) => ({ ...f, dateRecorded: e.target.value }))}
+                  disabled={submitLoading}
+                  aria-label="Date recorded"
+                />
+                <span className="date-input-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <rect x="3" y="5" width="18" height="16" rx="2" ry="2" />
+                    <line x1="8" y1="3" x2="8" y2="7" />
+                    <line x1="16" y1="3" x2="16" y2="7" />
+                    <line x1="3" y1="11" x2="21" y2="11" />
+                  </svg>
+                </span>
+              </div>
             </label>
             {error && <p className="form-error">{error}</p>}
             <button type="submit" disabled={submitLoading}>
